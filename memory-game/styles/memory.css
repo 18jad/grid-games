@@ -141,3 +141,9 @@ header {
 .home:hover {
     opacity: 0.7;
 }
+
+.score {
+    color: rgba(211, 142, 14, 0.874);
+    margin-top: 15px;
+    font-size: 23px;
+}
