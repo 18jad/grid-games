@@ -47,16 +47,17 @@ const updateCell = (clickedCell, cellIndex) => {
 }
 
 const checkWinning = () => {
+    let firstCell, secondCell, thirdCell, winTester;
     for (let i = 0; i < gameGrid.length - 1; i++) {
         // grab indexes we want to compare from winning state grid
         // it will give us array containing 3 indexes
-        let winTester = winningStateGrid[i];
+        winTester = winningStateGrid[i];
 
         // spread those indexes into game grid to check if there's any winning pattern
-        let firstCell = gameGrid[winTester[0] - 1];
-        let secondCell = gameGrid[winTester[1] - 1];
-        let thirdCell = gameGrid[winTester[2] - 1];
-
+        firstCell = gameGrid[winTester[0] - 1];
+        secondCell = gameGrid[winTester[1] - 1];
+        thirdCell = gameGrid[winTester[2] - 1];
+        console.log()
         // check winning pattern if 3 cells equal each others
         if (firstCell != '' && secondCell != '' && thirdCell != '') {
             if (firstCell == secondCell && secondCell == thirdCell) {
@@ -78,6 +79,13 @@ const checkWinning = () => {
         // update game status title to player won 
         playerTurn.style.color = "lime";
         playerTurn.textContent = `Player ${currentPlayer} won!`;
+
+        cards.forEach((card) => {
+            let index = parseInt(card.dataset.index);
+            if (index == winTester[0] || index == winTester[1] || index == winTester[2]) {
+                card.style.color = "lime"
+            }
+        })
     } else {
         // check is game grid have any empty cell
         let check = gameGrid.includes('')
@@ -100,7 +108,10 @@ const restartGame = () => {
     winState = false;
     playerTurn.style.color = "rgba(211, 142, 14, 0.874)";
     gameGrid = ["", "", "", "", "", "", "", "", ""];
-    cards.forEach(card => card.innerHTML = "");
+    cards.forEach(card => {
+        card.innerHTML = "";
+        card.style.color = "unset"
+    });
 }
 
 restartBtn.onclick = restartGame;
