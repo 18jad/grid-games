@@ -1,10 +1,23 @@
 // select all cards
 const cards = document.querySelectorAll('.card');
+// select game frame
+const game = document.querySelector('.game');
 
 // condtion check variables
 let firstCard = null;
 let cardsClicked = 0;
 let cardsLeft = 12;
+
+const checkWin = () => {
+    const checkCards = cardsLeft == 0;
+    if (checkCards) {
+        setTimeout(() => {
+
+            game.style.display = "block";
+            game.innerHTML = "<div class='win'><h1>YOU WON</h1></div>";
+        }, 700)
+    }
+}
 
 // if we are clearing matched cards do first condition, if we are clearing unmatched cards do second condition
 const clearCard = (card1, card2, matched = true) => {
@@ -23,6 +36,7 @@ const clearCard = (card1, card2, matched = true) => {
         // clear fist card and cards clicked 
         firstCard = null;
         cardsClicked = 0;
+        checkWin();
     }, 700)
 }
 
