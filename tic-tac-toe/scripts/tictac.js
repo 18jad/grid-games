@@ -16,3 +16,9 @@ let currentPlayer = 'X',
     gameRunning = true,
     gameGrid = ["", "", "", "", "", "", "", ""];
 
+const setCurrentPlayer = (player) => {
+    currentPlayer = player;
+    playerTurn.textContent = currentPlayer;
+}
+
+setCurrentPlayer('X')
