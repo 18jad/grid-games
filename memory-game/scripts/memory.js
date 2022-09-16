@@ -16,7 +16,7 @@ const checkWin = () => {
         setTimeout(() => {
             // clear grid displat and displat a new winning div
             game.style.display = "block";
-            game.innerHTML = "<div class='win'><h1>YOU WON</h1><button class='restart' onclick=''>Play again</button></div>";
+            game.innerHTML = "<div class='win'><h1>YOU WON</h1><button class='restart' onclick='restartGame()'>Play again</button></div>";
         }, 700)
     }
 }
@@ -47,6 +47,10 @@ const clearCard = (card1, card2, matched = true) => {
         cardsClicked = 0;
         checkWin();
     }, 700)
+}
+
+const restartGame = () => {
+    window.location.reload()
 }
 
 // add event listener for each card
