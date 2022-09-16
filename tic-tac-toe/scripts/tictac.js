@@ -1,6 +1,7 @@
 const game = document.querySelector('.game'),
     cards = document.querySelectorAll('.card'),
     playerTurn = document.getElementById('playerTurn'),
+    restartBtn = document.querySelector('.restart'),
     winningStateGrid = [
         [1, 2, 3],
         [4, 5, 6],
@@ -75,7 +76,8 @@ const checkWinning = () => {
         gameRunning = false;
 
         // update game status title to player won 
-        playerTurn.outerHTML = `<h3 style="color: lime !important;">Player ${currentPlayer} won!<h3>`;
+        playerTurn.style.color = "lime";
+        playerTurn.textContent = `Player ${currentPlayer} won!`;
     } else {
         // check is game grid have any empty cell
         let check = gameGrid.includes('')
@@ -84,10 +86,24 @@ const checkWinning = () => {
         // if no more empty cells then game end as draw
         if (!check) {
             gameRunning = false;
-            playerTurn.outerHTML = `<h3 style="color: red !important;">DRAW!</h3>`;
+            playerTurn.style.color = "red";
+            playerTurn.textContent = `DRAW!`;
+        } else {
+            switchPlayer();
         }
     }
 }
+
+const restartGame = () => {
+    gameRunning = true;
+    setCurrentPlayer('X', true)
+    winState = false;
+    playerTurn.style.color = "rgba(211, 142, 14, 0.874)";
+    gameGrid = ["", "", "", "", "", "", "", "", ""];
+    cards.forEach(card => card.innerHTML = "");
+}
+
+restartBtn.onclick = restartGame;
 
 // add event listener on each cell, and apply functions already made
 cards.forEach((card) => {
@@ -104,6 +120,5 @@ cards.forEach((card) => {
         // use already built funtions
         updateCell(clickedCard, clickedCardIndex - 1);
         checkWinning();
-        switchPlayer()
     })
 })
