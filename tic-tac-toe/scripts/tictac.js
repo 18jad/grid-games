@@ -31,3 +31,18 @@ const switchPlayer = () => {
     setCurrentPlayer(currentPlayer = currentPlayer == 'X' ? 'O' : 'X', true);
 }
 
+const updateCell = (clickedCell, cellIndex) => {
+    gameGrid[cellIndex] = currentPlayer;
+    clickedCell.textContent = currentPlayer;
+    clickedCell.dataset.player = currentPlayer.toLocaleLowerCase();
+}
+
+cards.forEach((card, index) => {
+    card.addEventListener('click', (e) => {
+        if (!gameRunning) return;
+        const clickedCard = e.target;
+        const clickedCardIndex = parseInt(clickedCard.dataset.index);
+        updateCell(clickedCard, clickedCardIndex - 1);
+        switchPlayer()
+    })
+})
