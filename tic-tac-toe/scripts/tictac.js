@@ -23,7 +23,7 @@ const setCurrentPlayer = (player, modify = false) => {
     if (modify) currentPlayer = player;
 
     // show currentPlayer on screen
-    playerTurn.textContent = player;
+    playerTurn.textContent = `Player ${currentPlayer} turn:`;
 }
 
 setCurrentPlayer('X')
@@ -75,7 +75,7 @@ const checkWinning = () => {
         gameRunning = false;
 
         // update game status title to player won 
-        playerTurn.outerHTML = `<h3>Player ${currentPlayer} won!</h3>`;
+        playerTurn.outerHTML = `<h3 style="color: lime !important;">Player ${currentPlayer} won!<h3>`;
     } else {
         // check is game grid have any empty cell
         let check = gameGrid.includes('')
@@ -84,7 +84,7 @@ const checkWinning = () => {
         // if no more empty cells then game end as draw
         if (!check) {
             gameRunning = false;
-            playerTurn.outerHTML = `<h3>DRAW!</h3>`;
+            playerTurn.outerHTML = `<h3 style="color: red !important;">DRAW!</h3>`;
         }
     }
 }
