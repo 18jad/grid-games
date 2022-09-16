@@ -101,3 +101,21 @@ header {
 .card[data-player="x"] {
     color: #94a4ae;
 }
+
+.restart {
+    margin-top: 30px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 3px solid rgba(211, 142, 14, 0.874);
+    background: transparent;
+    font-weight: bold;
+    font-size: 16px;
+    color: rgba(211, 142, 14, 0.874);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.restart:hover {
+    background: rgba(211, 142, 14, 0.874);
+    color: #2a4074;
+}
