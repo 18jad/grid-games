@@ -2,21 +2,34 @@
 const cards = document.querySelectorAll('.card');
 // select game frame
 const game = document.querySelector('.game');
+// score span
+const scoreText = document.getElementById('score');
 
 // condtion check variables
-let firstCard = null;
-let cardsClicked = 0;
-let cardsLeft = 12;
+let firstCard    = null,
+    cardsClicked = 0,
+    cardsLeft    = 12,
+    score        = localStorage.getItem('score') ? localStorage.getItem('score') : 0;
+
+// check if local storage have score key if yes set score equal to it
+scoreText.textContent = localStorage.getItem('score') ? localStorage.getItem('score') : score;
 
 // check if player won
 const checkWin = () => {
     // check if there's no more cards left to match
-    const checkCards = cardsLeft == 0;
+    const checkCards = (cardsLeft == 0);
     if (checkCards) {
         setTimeout(() => {
             // clear grid displat and displat a new winning div
+            // increase score
+            score++;
+
+            // set new score in local storage
+            localStorage.setItem('score', score)
             game.style.display = "block";
-            game.innerHTML = "<div class='win'><h1>YOU WON</h1><button class='restart' onclick='restartGame()'>Play again</button></div>";
+            game.innerHTML     = "<div class='win'><h1>YOU WON</h1><button class='restart' onclick='restartGame()'>Play again</button></div>";
+            // update score text on screen
+            scoreText.textContent = localStorage.getItem('score') ? localStorage.getItem('score') : score;
         }, 700)
     }
 }
@@ -43,7 +56,7 @@ const clearCard = (card1, card2, matched = true) => {
             card2.classList.remove('flipped');
         }
         // clear fist card and cards clicked 
-        firstCard = null;
+        firstCard    = null;
         cardsClicked = 0;
         checkWin();
     }, 700)
