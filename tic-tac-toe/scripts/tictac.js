@@ -2,6 +2,8 @@ const game             = document.querySelector('.game'),
       cards            = document.querySelectorAll('.card'),
       playerTurn       = document.getElementById('playerTurn'),
       restartBtn       = document.querySelector('.restart'),
+      scoreX           = document.getElementById('scoreX'),
+      scoreO           = document.getElementById('scoreO'),
       winningStateGrid = [
         [1, 2, 3],
         [4, 5, 6],
@@ -17,7 +19,11 @@ const game             = document.querySelector('.game'),
 let currentPlayer = 'X',
     gameRunning   = true,
     gameGrid      = ["", "", "", "", "", "", "", "", ""],
-    winState      = false;
+    winState      = false,
+    score         = {
+        x: 0,
+        o: 0,
+    }
 
 const setCurrentPlayer = (player, modify = false) => {
     // modify currentPlayer variables if needed
@@ -76,9 +82,17 @@ const checkWinning = () => {
         // change game state
         gameRunning = false;
 
-        // update game status title to player won 
+        // increase score based on winner
+        if (currentPlayer == 'X') score.x++;
+        else score.o++;
+
+        // update game status title to player won
         playerTurn.style.color = "lime";
         playerTurn.textContent = `Player ${currentPlayer} won!`;
+
+        // update score on the screen
+        scoreO.textContent = score.o;
+        scoreX.textContent = score.x;
 
         // highlight winning row/column 
         cards.forEach((card) => {
