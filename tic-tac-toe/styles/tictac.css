@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;900&display=swap");
 
 * {
     padding: 0;
@@ -8,7 +9,95 @@
 }
 
 body {
-    background: url('../assets/Animated\ Shape.svg');
+    background: url("../../assets/Animated\ Shape.svg");
     width: 100vw;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header {
+    font-size: 30px;
+    color: rgba(211, 142, 14, 0.874);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    grid-template-rows: repeat(3, 0fr);
+    grid-row-gap: 20px;
+    place-content: center;
+    justify-content: center;
+    grid-column-gap: 20px;
+    background: #254075;
+    width: fit-content;
+    padding: 10px;
+    perspective: 500px;
+    border-radius: 10px;
+    border: 3px solid rgba(211, 142, 14, 0.874);
+}
+
+.seperator {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: rgba(211, 142, 14, 0.874);
+}
+
+.seperator.first {
+    top: 33%;
+}
+
+
+.seperator.second {
+    bottom: 33%;
+}
+
+.line {
+    height: 100%;
+    width: 3px;
+    position: absolute;
+    background: rgba(211, 142, 14, 0.874);
+}
+
+.line.first {
+    left: 33%;
+}
+
+.line.second {
+    right: 33%;
+}
+
+.card {
+    position: relative;
+    height: 150px;
+    border: 1px solid #5c73a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out;
+    perspective: 600px;
+    font-size: 120px;
+    font-family: 'Finger Paint', cursive !important;
+    background: #2f4c85;
+    text-shadow: 0 0 20px #0004;
+}
+
+.card[data-player="o"] {
+    color: #7384d0;
+}
+
+.card[data-player="x"] {
+    color: #94a4ae;
 }
