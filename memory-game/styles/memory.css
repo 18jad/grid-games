@@ -56,7 +56,7 @@ header {
     cursor: pointer;
     transform-style: preserve-3d;
     transform-origin: center right;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, scale 0.5s ease-in-out;
     perspective: 600px;
     background: #2f4c85;
 }
@@ -88,4 +88,8 @@ header {
     object-fit: contain;
     user-select: none;
     -webkit-user-drag: none;
+}
+.hide {
+    scale: 0;
+    pointer-events: none;
 }
