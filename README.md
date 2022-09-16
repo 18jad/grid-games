@@ -12,4 +12,4 @@
 <img src="https://i.ibb.co/zmnQ6fy/x.png">
 
 # Demo
-<a href="https://18jad.github.io/grid-grame/">Demo</a>
+<a href="https://18jad.github.io/grid-games/">Demo</a>
