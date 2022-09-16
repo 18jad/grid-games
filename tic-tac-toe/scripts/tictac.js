@@ -1,8 +1,8 @@
-const game = document.querySelector('.game'),
-    cards = document.querySelectorAll('.card'),
-    playerTurn = document.getElementById('playerTurn'),
-    restartBtn = document.querySelector('.restart'),
-    winningStateGrid = [
+const game             = document.querySelector('.game'),
+      cards            = document.querySelectorAll('.card'),
+      playerTurn       = document.getElementById('playerTurn'),
+      restartBtn       = document.querySelector('.restart'),
+      winningStateGrid = [
         [1, 2, 3],
         [4, 5, 6],
         [7, 8, 9],
@@ -15,9 +15,9 @@ const game = document.querySelector('.game'),
 
 // game variables
 let currentPlayer = 'X',
-    gameRunning = true,
-    gameGrid = ["", "", "", "", "", "", "", "", ""],
-    winState = false;
+    gameRunning   = true,
+    gameGrid      = ["", "", "", "", "", "", "", "", ""],
+    winState      = false;
 
 const setCurrentPlayer = (player, modify = false) => {
     // modify currentPlayer variables if needed
@@ -54,10 +54,10 @@ const checkWinning = () => {
         winTester = winningStateGrid[i];
 
         // spread those indexes into game grid to check if there's any winning pattern
-        firstCell = gameGrid[winTester[0] - 1];
+        firstCell  = gameGrid[winTester[0] - 1];
         secondCell = gameGrid[winTester[1] - 1];
-        thirdCell = gameGrid[winTester[2] - 1];
-        console.log()
+        thirdCell  = gameGrid[winTester[2] - 1];
+
         // check winning pattern if 3 cells equal each others
         if (firstCell != '' && secondCell != '' && thirdCell != '') {
             if (firstCell == secondCell && secondCell == thirdCell) {
@@ -80,12 +80,14 @@ const checkWinning = () => {
         playerTurn.style.color = "lime";
         playerTurn.textContent = `Player ${currentPlayer} won!`;
 
+        // highlight winning row/column 
         cards.forEach((card) => {
             let index = parseInt(card.dataset.index);
             if (index == winTester[0] || index == winTester[1] || index == winTester[2]) {
-                card.style.color = "lime"
+                card.setAttribute("style", "color: lime !important");
             }
         })
+
     } else {
         // check is game grid have any empty cell
         let check = gameGrid.includes('')
@@ -93,7 +95,7 @@ const checkWinning = () => {
         // if yes continue the game
         // if no more empty cells then game end as draw
         if (!check) {
-            gameRunning = false;
+            gameRunning            = false;
             playerTurn.style.color = "red";
             playerTurn.textContent = `DRAW!`;
         } else {
@@ -105,12 +107,12 @@ const checkWinning = () => {
 const restartGame = () => {
     gameRunning = true;
     setCurrentPlayer('X', true)
-    winState = false;
+    winState               = false;
     playerTurn.style.color = "rgba(211, 142, 14, 0.874)";
-    gameGrid = ["", "", "", "", "", "", "", "", ""];
+    gameGrid               = ["", "", "", "", "", "", "", "", ""];
     cards.forEach(card => {
         card.innerHTML = "";
-        card.style.color = "unset"
+        card.setAttribute("style", "")
     });
 }
 
@@ -127,6 +129,9 @@ cards.forEach((card) => {
 
         // grab the index from the dataset data-index in html
         const clickedCardIndex = parseInt(clickedCard.dataset.index);
+
+        // if current cell already have been player do nothing
+        if (clickedCard.innerHTML == 'X' || clickedCard.innerHTML == 'O') return
 
         // use already built funtions
         updateCell(clickedCard, clickedCardIndex - 1);
