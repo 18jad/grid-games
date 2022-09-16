@@ -16,7 +16,7 @@ const checkWin = () => {
         setTimeout(() => {
             // clear grid displat and displat a new winning div
             game.style.display = "block";
-            game.innerHTML = "<div class='win'><h1>YOU WON</h1></div>";
+            game.innerHTML = "<div class='win'><h1>YOU WON</h1><button class='restart' onclick=''>Play again</button></div>";
         }, 700)
     }
 }
