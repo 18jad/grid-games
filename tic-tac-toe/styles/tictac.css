@@ -119,3 +119,22 @@ header {
     background: rgba(211, 142, 14, 0.874);
     color: #2a4074;
 }
+
+.home {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    background: #344c83;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: rgba(211, 142, 14, 0.874);
+    font-weight: bold;
+    font-size: 19px;
+    border-radius: 100px;
+    transition: opacity 200ms ease-in-out;
+}
+
+.home:hover {
+    opacity: 0.7;
+}

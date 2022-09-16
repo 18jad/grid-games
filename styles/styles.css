@@ -79,6 +79,7 @@ a {
 
 .game-preview {
     height: 200px;
+    max-width: 370px;
     border-radius: 10px;
     border: 1px solid white;
     box-shadow: 0 4px 8px #0002;
