@@ -8,14 +8,23 @@ let firstCard = null;
 let cardsClicked = 0;
 let cardsLeft = 12;
 
+// check if player won
 const checkWin = () => {
+    // check if there's no more cards left to match
     const checkCards = cardsLeft == 0;
     if (checkCards) {
         setTimeout(() => {
-
+            // clear grid displat and displat a new winning div
             game.style.display = "block";
             game.innerHTML = "<div class='win'><h1>YOU WON</h1></div>";
         }, 700)
+    }
+}
+
+const shuffleCards = () => {
+    // moving a card from a position to another by appending it to parent
+    for (let i = game.children.length; i >= 0; i--) {
+        game.appendChild(game.children[Math.random() * i | 0]);
     }
 }
 
@@ -79,3 +88,5 @@ const clearCard = (card1, card2, matched = true) => {
 
     });
 });
+
+window.onload = shuffleCards;
