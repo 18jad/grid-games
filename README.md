@@ -6,10 +6,10 @@
 <img src="https://i.ibb.co/7g1tKbn/ss2.png">
 
 - Memory Game
-<img src="https://i.ibb.co/vvCSrWt/ss3.png">
+<img src="https://i.ibb.co/ZT1mDsM/Screenshot-2022-09-16-233933.png">
 
 - TicTacToe
-<img src="https://i.ibb.co/sWcwf6k/ss1.png">
+<img src="https://i.ibb.co/zmnQ6fy/x.png">
 
 # Demo
 <a href="">Demo</a>
