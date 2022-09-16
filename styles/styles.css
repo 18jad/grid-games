@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+body {
+    background: url('../assets/Animated\ Shape.svg');
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    font-size: 30px;
+    color: rgba(211, 142, 14, 0.874);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 12%;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.des {
+    color: rgba(211, 142, 14, 0.874);
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.games {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.memory-game,
+.tictactoe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: #254075;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    width: 400px;
+    text-align: center;
+    transition: transform 200ms ease-in-out;
+}
+
+.memory-game:hover,
+.tictactoe:hover {
+    transform: scale(1.05);
+}
+
+.description {
+    overflow-wrap: everywhere;
+    word-wrap: break-word;
+    width: 100%;
+}
+
+.game-preview {
+    height: 200px;
+    border-radius: 10px;
+}
