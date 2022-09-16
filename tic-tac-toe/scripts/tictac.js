@@ -16,9 +16,18 @@ let currentPlayer = 'X',
     gameRunning = true,
     gameGrid = ["", "", "", "", "", "", "", ""];
 
-const setCurrentPlayer = (player) => {
-    currentPlayer = player;
-    playerTurn.textContent = currentPlayer;
+const setCurrentPlayer = (player, modify = false) => {
+    // modify currentPlayer variables if needed
+    if (modify) currentPlayer = player;
+
+    // show currentPlayer on screen
+    playerTurn.textContent = player;
 }
 
 setCurrentPlayer('X')
+
+const switchPlayer = () => {
+    // switch player and set currentPlayer to the one desired
+    setCurrentPlayer(currentPlayer = currentPlayer == 'X' ? 'O' : 'X', true);
+}
+
